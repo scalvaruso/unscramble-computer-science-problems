@@ -95,7 +95,7 @@ def percentage_local_calls(calls):
     percentage = (local_calls/total_calls) * 100
 
     # Returning the result with 2 decimal digits using f"{percentage:.2f}"
-    return f"{percentage:.2f} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore."
+    return percentage
 
 
 # Call function for Part A.
@@ -105,4 +105,4 @@ for area_code in find_area_codes(calls):
 
 
 # Call function for Part B.
-print(percentage_local_calls(calls))
+print(f"{percentage_local_calls(calls):.2f} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
