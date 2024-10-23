@@ -26,8 +26,7 @@ The size of the set (the number of unique telephone numbers) is then determined 
 **Complexity Analysis**:
 
 - **Algorithm**: The solution uses two loops to iterate through the records: one for texts and one for calls. In each iteration, sending and receiving numbers are added to a set, which automatically handles duplicates.
-- **Big O Notation**: $O(n)$ where $n$ is $t$+$c$:  
-$t$ is the number of records in the texts file, and $c$ is the number of records in the calls file.
+- **Big O Notation**: $O(n)$, where $n$ is $t$+$c$, and $t$ is the number of records in the texts file and $c$ is the number of records in the calls file.
 - **Justification**: Each record from both texts and calls is processed once $O(t+c)$, and each unique number is inserted into the set, which handles duplicates in constant average time $O(1)$. Thus, the overall complexity depends linearly on the combined size of the records.
 
 ---
@@ -48,15 +47,24 @@ $t$ is the number of records in the texts file, and $c$ is the number of records
 
 ## Task3
 
-**Description**:
+**Description**: The problem involves identifying and analyzing phone calls made by people in Bangalore (calls with area code 080). The task is to find unique area codes and mobile prefixes called by these Bangalore-based callers and calculate the percentage of calls made to other Bangalore-based fixed lines.
 
 **Approach**:
 
+- Part A: Iterated through the call records to extract unique area codes or mobile prefixes called by Bangalore callers (area code 080). These codes are then sorted lexicographically.
+- Part B: Iterated through the call records to count calls made from Bangalore (area code 080) and calculated the percentage of those made inside the same area (area code 080).
+
 **Complexity Analysis**:
 
-- **Algorithm**: ...
-- **Big O Notation**: ...
-- **Justification**: ...
+- **Algorithm**:
+  - Part A involves iterating over the entire call dataset once. For each call record, the program performs a check to see if the calling number starts with 080 (Bangalore area code). If it does, it extracts the relevant area code or prefix and stores them in a set (which allows for constant time insertions on average). Finally, the program sorts the set of codes.
+  - Part B also involves a single iteration over the dataset to calculate the percentage of calls made from Bangalore to Bangalore (area code 080).
+- **Big O Notation**: $O(n \log n)$, where $n$ is the number of call records.
+- **Justification**:
+  - Part A, iterating through all calls takes $O(n)$, where $n$ is the number of call records, and collecting unique codes into a set is $O(1)$ on average. Sorting these codes takes $O(k \log k)$, where $k$ is the number of unique area codes, which can be at most $n$. Thus, the time complexity for Part A is $O(n \log n)$ in the worst case.  
+  - Part B involves a single loop over the records with $O(n)$ complexity.  
+
+  Combining the two, the overall complexity is $O(n \log n)$, as sorting in Part A dominates the runtime.
 
 ---
 
