@@ -70,12 +70,14 @@ The size of the set (the number of unique telephone numbers) is then determined 
 
 ## Task4
 
-**Description**:
+**Description**: The task involves identifying possible telemarketers by analyzing call and text records. Telemarketers are defined as numbers that make outgoing calls but do not receive incoming calls, send texts, or receive texts.
 
-**Approach**:
+**Approach**: Extract sets of Numbers that make outgoing calls, and Numbers that receive calls or send/receive texts.  
+Identify possible telemarketers by finding numbers that make outgoing calls but are not in the set of numbers that receive calls or send/receive texts.  
+Sort the identified numbers in lexicographic order and print them.
 
 **Complexity Analysis**:
 
-- **Algorithm**: ...
-- **Big O Notation**: ...
-- **Justification**: ...
+- **Algorithm**: The task involves processing two lists (calls and texts) and using set operations, followed by sorting the set of possible telemarketers.
+- **Big O Notation**: $O(n \log n)$, where $n$ is the number of records.
+- **Justification**: Both lists, calls and texts, are iterated once to extract numbers into sets. This takes $O(c)$ and $O(t)$ time, respectively. Adding elements to sets and performing `.difference_update()` both have an average-case complexity of $O(1)$ per operation. Finally, the set of potential telemarketer numbers (of size $k$) is sorted, which takes $O(k \log k)$ time. Therefore the overall time complexity is $O(c + t + k \log k)$ that can be reduced to $O(n \log n)$.
